@@ -9,13 +9,23 @@ pub mod hello_world {
 async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let mut client = GreeterClient::connect("http://[::1]:50051").await?;
 
-    let request = tonic::Request::new(HelloRequest {
-        name: "Tonic".into(),
+    let request1 = tonic::Request::new(HelloRequest {
+        name: "Tonic1".into(),
+    });
+    let response1 = client.say_hello(request1).await?;
+    println!("RESPONSE={:?}", response1);
+
+    let request2 = tonic::Request::new(HelloRequest {
+        name: "Tonic2".into(),
     });
 
-    let response = client.say_hello(request).await?;
-
-    println!("RESPONSE={:?}", response);
+    // let response2 = client.say_hello(request2).await?;
+    let response2 = client.say_hello(request2).await;
+    if response2.is_ok() {
+        println!("RESPONSE={:?}", response2);
+    } else {
+        println!("Connect ERROR={:?}", response2.err());
+    }
 
     Ok(())
 }
