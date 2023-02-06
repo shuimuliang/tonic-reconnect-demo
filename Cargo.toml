@@ -13,10 +13,32 @@ path = "src/server.rs"
 name = "helloworld-client"
 path = "src/client.rs"
 
+[[bin]]
+name = "helloworld-timeout-client"
+path = "src/timeout/client.rs"
+required-features = ["timeout", "retry"]
+
+[[bin]]
+name = "helloworld-timeout-server"
+path = "src/timeout/server.rs"
+required-features = ["timeout", "retry"]
+
+[features]
+timeout = ["tokio/time", "dep:tower"]
+retry = ["dep:tower"]
+tls-client-auth = ["tonic/tls"]
+full = ["timeout", "retry"]
+default = ["full"]
+
 [dependencies]
 prost = "0.11.6"
 tokio = { version = "1.0", features = ["macros", "rt-multi-thread"] }
 tonic = "0.8.3"
+# tower = { git = "https://github.com/tower-rs/tower.git", branch = "lucio/standard-policy2", version = "0.4.12", features = ["retry", "timeout"], optional = true }
+tower = { version = "0.4", optional = true }
+futures = { version = "0.3", default-features = false, optional = true }
+hyper = { version = "0.14", optional = true }
+http = { version = "0.2", optional = true }
 
 [build-dependencies]
 tonic-build = "0.8"
