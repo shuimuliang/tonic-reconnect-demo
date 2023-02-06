@@ -16,12 +16,12 @@ path = "src/client.rs"
 [[bin]]
 name = "helloworld-timeout-client"
 path = "src/timeout/client.rs"
-required-features = ["timeout", "retry"]
+required-features = ["timeout"]
 
 [[bin]]
 name = "helloworld-timeout-server"
 path = "src/timeout/server.rs"
-required-features = ["timeout", "retry"]
+required-features = ["timeout"]
 
 [features]
 timeout = ["tokio/time", "dep:tower"]
