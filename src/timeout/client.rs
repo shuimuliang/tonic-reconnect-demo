@@ -15,15 +15,13 @@ async fn main() -> Result<(), Box<dyn std::error::Error>> {
     let timeout_channel = Timeout::new(channel, Duration::from_millis(1000));
     let mut client = GreeterClient::new(timeout_channel);
 
-    {
-        let request = tonic::Request::new(HelloRequest {
-            name: "hello".into(),
-        });
+    let request = tonic::Request::new(HelloRequest {
+        name: "hello".into(),
+    });
 
-        let response = client.say_hello(request).await?;
+    let response = client.say_hello(request).await?;
 
-        println!("RESPONSE={:?}", response);
-    }
+    println!("RESPONSE={:?}", response);
 
     Ok(())
 }
