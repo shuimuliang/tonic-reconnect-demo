@@ -28,11 +28,22 @@ required-features = ["timeout"]
 name = "helloworld-retry-client"
 path = "src/retry/client.rs"
 
+[[bin]]
+name = "helloworld-streaming-client"
+path = "src/streaming/client.rs"
+required-features = ["streaming"]
+
+[[bin]]
+name = "helloworld-streaming-server"
+path = "src/streaming/server.rs"
+required-features = ["streaming"]
+
 [features]
 timeout = ["tokio/time", "dep:tower"]
 retry = ["dep:tower"]
-full = ["timeout", "retry"]
+full = ["timeout", "retry", "streaming"]
 default = ["full"]
+streaming = ["dep:futures", "tokio-stream", "dep:h2"]
 
 [dependencies]
 prost = "0.11.6"
@@ -46,6 +57,8 @@ http = { version = "0.2", optional = true }
 futures-util = "0.3.26"
 backoff = { version = "0.4.0", features = ["tokio"] }
 anyhow = "1.0.69"
+h2 = { version = "0.3", optional = true }
+tokio-stream = { version = "0.1", optional = true }
 
 [build-dependencies]
 tonic-build = "0.8"
