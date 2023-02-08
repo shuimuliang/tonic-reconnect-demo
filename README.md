@@ -1,5 +1,5 @@
 # tonic-reconnect-demo
-tonic client with reconnect policy
+tonic client with retry policy
 
 ## Project Setup
 
@@ -40,3 +40,8 @@ fn main() -> Result<(), Box<dyn std::error::Error>> {
 ## Test helloworld without Reconnect Policy
 To run the server, run `cargo run --bin helloworld-server`.
 To run the client, run `cargo run --bin helloworld-client` in another terminal window.
+
+## my thoughts
+give up on tower::retry entirely
+and writing retry service from scratch, ref git:
+https://github.com/linkerd/linkerd2-proxy/tree/main/linkerd/http-retry
