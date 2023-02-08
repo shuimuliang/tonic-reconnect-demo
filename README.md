@@ -45,3 +45,4 @@ To run the client, run `cargo run --bin helloworld-client` in another terminal w
 give up on tower::retry entirely
 and writing retry service from scratch, ref git:
 https://github.com/linkerd/linkerd2-proxy/tree/main/linkerd/http-retry
+https://linkerd.io/2021/10/26/how-linkerd-retries-http-requests-with-bodies/
