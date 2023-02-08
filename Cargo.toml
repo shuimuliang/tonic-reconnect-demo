@@ -24,6 +24,10 @@ name = "helloworld-timeout-server"
 path = "src/timeout/server.rs"
 required-features = ["timeout"]
 
+[[bin]]
+name = "helloworld-retry-client"
+path = "src/retry/client.rs"
+
 [features]
 timeout = ["tokio/time", "dep:tower"]
 retry = ["dep:tower"]
@@ -40,6 +44,8 @@ futures = { version = "0.3", default-features = false, optional = true }
 hyper = { version = "0.14", optional = true }
 http = { version = "0.2", optional = true }
 futures-util = "0.3.26"
+backoff = { version = "0.4.0", features = ["tokio"] }
+anyhow = "1.0.69"
 
 [build-dependencies]
 tonic-build = "0.8"
