@@ -34,6 +34,11 @@ path = "src/streaming/client.rs"
 required-features = ["streaming"]
 
 [[bin]]
+name = "helloworld-streaming-retry-client"
+path = "src/streaming/retry_client.rs"
+required-features = ["streaming"]
+
+[[bin]]
 name = "helloworld-streaming-server"
 path = "src/streaming/server.rs"
 required-features = ["streaming"]

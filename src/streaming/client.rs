@@ -51,6 +51,8 @@ async fn bidirectional_streaming_echo(client: &mut EchoClient<Channel>, num: usi
 async fn bidirectional_streaming_echo_throttle(client: &mut EchoClient<Channel>, dur: Duration) {
     let in_stream = echo_requests_iter().throttle(dur);
 
+    // response: Result<tonic::Response<tonic::codec::Streaming<super::EchoResponse>>, tonic::Status>
+
     let response = client
         .bidirectional_streaming_echo(in_stream)
         .await

@@ -42,7 +42,17 @@ To run the server, run `cargo run --bin helloworld-server`.
 To run the client, run `cargo run --bin helloworld-client` in another terminal window.
 
 ## my thoughts
+### Solution 1
 give up on tower::retry entirely
 and writing retry service from scratch, ref git:
 https://github.com/linkerd/linkerd2-proxy/tree/main/linkerd/http-retry
 https://linkerd.io/2021/10/26/how-linkerd-retries-http-requests-with-bodies/
+### Solution 2
+RetryClient implementation in Solana BigTable
+https://github.com/solana-labs/solana/blob/e14d0638e78d780558d308d3124243016ad23005/storage-bigtable/src/bigtable.rs#L258
+
+## Streaming retry test case
+To run the server, run `cargo run --bin helloworld-streaming-server`.
+To run the client, run `cargo run --bin helloworld-streaming-retry-client` in another terminal window.
+
+![streaming-retry-client-screenshot.png](img%2Fstreaming-retry-client-screenshot.png)

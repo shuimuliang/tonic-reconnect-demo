@@ -1,8 +1,8 @@
-use tonic::transport::Channel;
-use hello_world::greeter_client::GreeterClient;
-use hello_world::{HelloRequest, HelloReply};
-use backoff::{ExponentialBackoff, future::retry};
 use anyhow;
+use backoff::{future::retry, ExponentialBackoff};
+use hello_world::greeter_client::GreeterClient;
+use hello_world::{HelloReply, HelloRequest};
+use tonic::transport::Channel;
 use tonic::{Response, Status};
 
 pub mod hello_world {
@@ -33,7 +33,8 @@ impl RetryConnection {
                 name: "Tonic".into(),
             });
             Ok(retry_client.client.say_hello(request).await?)
-        }).await
+        })
+        .await
     }
 }
 
