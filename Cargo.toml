@@ -39,6 +39,11 @@ path = "src/streaming/retry_client.rs"
 required-features = ["streaming"]
 
 [[bin]]
+name = "helloworld-streaming-retry-auth-client"
+path = "src/streaming/retry_auth_client.rs"
+required-features = ["streaming"]
+
+[[bin]]
 name = "helloworld-streaming-server"
 path = "src/streaming/server.rs"
 required-features = ["streaming"]
@@ -64,6 +69,7 @@ backoff = { version = "0.4.0", features = ["tokio"] }
 anyhow = "1.0.69"
 h2 = { version = "0.3", optional = true }
 tokio-stream = { version = "0.1", optional = true }
+thiserror = "1.0.38"
 
 [build-dependencies]
 tonic-build = "0.8"
